@@ -40,6 +40,10 @@ fi
 function upgrade_nym () {
 #set -x
 cd /home/nym1
+select d in /home/nym1/.nym/mixnodes/* ; do test -n "$d" && break; printf "%b\n\n\n" "${WHITE} >>> Invalid Selection"; done
+directory=$(echo "$d" | rev | cut -d/ -f1 | rev)
+printf "%b\n\n\n"
+printf "%b\n\n\n" "${WHITE} You selected ${YELLOW} $directory"
 sleep 2
 printf "%b\n\n\n" "${WHITE} Enter the Liquid-BTC address for the incentives rewards"
 read wallet
