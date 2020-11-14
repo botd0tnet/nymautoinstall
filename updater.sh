@@ -10,7 +10,7 @@ NOCOLOR='\033[0m' # DEFAULT FONT
 
 function systemd_ison () {
 if systemctl list-units --state=running | grep nym-mixnode1
-then echo "stopping nym-mixnode1.service to update the node ..." && systemctl stop nym-mixnode
+then echo "stopping nym-mixnode1.service to update the node ..." && systemctl stop nym-mixnode1
 else echo " nym-mixnode1.service is inactive or not existing. Downloading new binaries ..."
 fi
 }
@@ -25,7 +25,7 @@ URL="https://github.com/nymtech/nym/releases/download/v$VERSION/nym-mixnode_linu
 if [ ! -f nym-mixnode_linux_x86_64 ] || [ "$(./nym-mixnode_linux_x86_64 --version | grep Nym | cut -c 13- )" != "$VERSION" ]
    then
        if systemctl list-units --state=running | grep nym-mixnode1
-          then echo "stopping nym-mixnode1.service to update the node ..." && systemctl stop nym-mixnode
+          then echo "stopping nym-mixnode1.service to update the node ..." && systemctl stop nym-mixnode1
                 curl -L -s "$URL" -o "nym-mixnode_linux_x86_64" --cacert /etc/ssl/certs/ca-certificates1.crt && echo "Fetching the latest version" && pwd
           else echo " nym-mixnode1.service is inactive or not existing. Downloading new binaries ..." && pwd
     		curl -L -s "$URL" -o "nym-mixnode_linux_x86_64" --cacert /etc/ssl/certs/ca-certificates1.crt && echo "Fetching the latest version" && pwd
