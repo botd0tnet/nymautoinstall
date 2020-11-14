@@ -47,9 +47,7 @@ printf "%b\n\n\n"
 printf "%b\n\n\n" "${WHITE} Address for the incentives rewards will be ${YELLOW} ${wallet} "
 printf "%b\n\n\n" "${WHITE} You may later change it in config.toml if needed, but you need to stop the node first and then edit it with an editor such as nano"
 
-current_version='0.8.1'
-printf "%b\n\n\n" "${WHITE} You entered version ${current_version}"
-sudo -u nym -H ./nym-mixnode_linux_x86_64 upgrade --id 'NymMixNode' --incentives-address $wallet --current-version $current_version
+sudo -u nym -H ./nym-mixnode_linux_x86_64 upgrade --id 'NymMixNode' --incentives-address $wallet --current-version '0.8.1'
 }
 
 downloader && sleep 2 && upgrade_nym && sleep 5 && systemctl start nym-mixnode1.service
